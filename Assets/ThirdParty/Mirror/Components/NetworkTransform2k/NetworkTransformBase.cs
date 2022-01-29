@@ -342,7 +342,7 @@ namespace Mirror
             // authoritative movement done by the host will have to be broadcasted
             // here by checking IsClientWithAuthority.
             if (NetworkTime.localTime >= lastServerSendTime + sendInterval &&
-                (!clientAuthority || IsClientWithAuthority))
+                (!clientAuthority || IsClientWithAuthority || connectionToClient == null))
             {
                 // send snapshot without timestamp.
                 // receiver gets it from batch timestamp to save bandwidth.
@@ -568,6 +568,21 @@ namespace Mirror
 
             // TODO what about host mode?
             OnTeleport(destination, rotation);
+        }
+
+        public void ServerTeleport(Vector3 destination)
+        {
+            // TODO what about host mode?
+            OnTeleport(destination);
+
+            // if a client teleports, we need to broadcast to everyone else too
+            // TODO the teleported client should ignore the rpc though.
+            //      otherwise if it already moved again after teleporting,
+            //      the rpc would come a little bit later and reset it once.
+            // TODO or not? if client ONLY calls Teleport(pos), the position
+            //      would only be set after the rpc. unless the client calls
+            //      BOTH Teleport(pos) and targetComponent.position=pos
+            RpcTeleport(destination);
         }
 
         // client->server teleport to force position without interpolation.

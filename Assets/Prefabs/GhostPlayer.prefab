@@ -9,9 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2988427541585567133, guid: 76baa992d45893f4ba3cb64e401e69d2, type: 3}
       propertyPath: m_Text
-      value: 'YOU ARE A GHOST!
-
-        BUUUUUUUUUUU!'
+      value: GHOST!
       objectReference: {fileID: 0}
     - target: {fileID: 2988427541585567133, guid: 76baa992d45893f4ba3cb64e401e69d2, type: 3}
       propertyPath: m_FontData.m_Alignment
