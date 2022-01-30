@@ -29,7 +29,7 @@ public class MouseLook : MonoBehaviour, IMovement
 
         if(Input.GetMouseButtonDown(0))
         {
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;

@@ -9,9 +9,9 @@ public class GhostNetworkManager : NetworkRoomManager
     public GameObject humanPlayerPrefab;
     public GameObject ghostPlayerPrefab;
 
-    protected bool ghostIsRandom = true;
+    protected bool humanIsRandom = true;
 
-    protected NetworkConnection playerToBeGhost;
+    protected NetworkConnection playerToBeHuman;
 
 
     /// <summary>
@@ -19,10 +19,10 @@ public class GhostNetworkManager : NetworkRoomManager
     /// </summary>
     public override void OnRoomServerPlayersReady()
     {
-        if(ghostIsRandom)
+        if(humanIsRandom)
         {
             int randomPlayer = Random.Range(0,NetworkServer.connections.Count);
-            playerToBeGhost = NetworkServer.connections.ElementAt(randomPlayer).Value;
+            playerToBeHuman = NetworkServer.connections.ElementAt(0).Value;
         }
         
         // calling the base method calls ServerChangeScene as soon as all players are in Ready state.
@@ -44,7 +44,7 @@ public class GhostNetworkManager : NetworkRoomManager
     {
         // get start position from base class
         Transform startPos = GetStartPosition();
-        GameObject prefabToInstantiate = ShouldPlayerBeGhost(conn) ? ghostPlayerPrefab : humanPlayerPrefab;
+        GameObject prefabToInstantiate = ShouldPlayerBeHuman(conn) ? humanPlayerPrefab : ghostPlayerPrefab;
 
         if(startPos != null)
             return Instantiate(prefabToInstantiate, startPos.position, startPos.rotation);
@@ -53,9 +53,9 @@ public class GhostNetworkManager : NetworkRoomManager
     }
 
     //Just to find if player should be ghost. Can be custom logic
-    protected bool ShouldPlayerBeGhost(NetworkConnection conn)
+    protected bool ShouldPlayerBeHuman(NetworkConnection conn)
     {
-        return conn == playerToBeGhost;
+        return conn == playerToBeHuman;
     }
 
     /*

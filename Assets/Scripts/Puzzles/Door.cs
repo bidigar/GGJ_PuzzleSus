@@ -12,10 +12,11 @@ public class Door : NetworkBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
+    bool called = false;
     public void OpenDoor()
     {
-        audioSource.Play();
-        StartCoroutine(WaitAndReturnToMenu());
+        called = true;
+        CmdOpenDoor();
     }
 
     IEnumerator WaitAndReturnToMenu()
@@ -26,7 +27,8 @@ public class Door : NetworkBehaviour
             canvasGroup.alpha += 0.1f;
             yield return transition;
         }
-        CmdReturnToLobby();
+        if(called)
+            CmdReturnToLobby();
     }
 
     [Command(requiresAuthority = false)]
@@ -34,5 +36,18 @@ public class Door : NetworkBehaviour
     {
         NetworkRoomManager nm = NetworkManager.singleton as NetworkRoomManager;
         nm.ServerChangeScene(nm.RoomScene);
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdOpenDoor()
+    {
+        RpcOpenDoor();
+    }
+
+    [ClientRpc]
+    void RpcOpenDoor()
+    {
+        audioSource.Play();
+        StartCoroutine(WaitAndReturnToMenu());
     }
 }

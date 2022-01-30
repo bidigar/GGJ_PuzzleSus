@@ -8,7 +8,7 @@ public class ItemManager : MonoBehaviour
     {
         get
         {
-            if(m_instance == null)
+            if(m_instance == null || !m_instance.gameObject.activeInHierarchy)
             {
                 m_instance = GameObject.FindObjectOfType<ItemManager>();
             }

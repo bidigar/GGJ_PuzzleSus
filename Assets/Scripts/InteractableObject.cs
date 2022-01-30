@@ -13,13 +13,31 @@ public class InteractableObject : MonoBehaviour
     UnityEvent<GameObject> wasClicked = new UnityEvent<GameObject>();
     public bool needKeyItem = true;
 
+    bool alreadySubscribed = false;
+
     IEnumerator Start()
     {
-        yield return null;
-        yield return null;
+        yield return new WaitForSeconds(1);
 
-        if (!isGhost) wasClicked.AddListener(ItemManager.Instance.InteractingWithItems);
-        else wasClicked.AddListener(ItemManager.Instance.InteractingWithItems);
+        if(GhostPlayer.localPlayer != null)
+        {
+            SubscribeToItemManager(GhostPlayer.localPlayer.itemManager, GhostPlayer.localPlayer.isGhost);
+        }
+        // else
+        // {
+        //     if (!isGhost) wasClicked.AddListener(ItemManager.Instance.InteractingWithItems);
+        //     else wasClicked.AddListener(ItemManager.Instance.InteractingWithItems);
+        // }
+    }
+
+    public void SubscribeToItemManager(ItemManager itemManager, bool subscriberIsGhost)
+    {
+        if(!alreadySubscribed)
+        {
+            if(isGhost == subscriberIsGhost)
+                wasClicked.AddListener(itemManager.InteractingWithItems);
+            alreadySubscribed = true;
+        }
     }
 
     public void ObjectInteraction(ItemManager manager) {

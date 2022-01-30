@@ -21,9 +21,26 @@ public class KeyItem : MonoBehaviour, IPickableItem
         get{ return mySizeX; }
     }
 
-    void Start()
+    protected bool alreadySubscribed = false;
+    
+
+    IEnumerator Start()
     {
-        wasPicked.AddListener(GameObject.FindGameObjectWithTag("Player").GetComponent<ItemManager>().InteractingWithItems);
+        yield return new WaitForSeconds(1);
+        Debug.Log("Item manager is " + ItemManager.Instance);
+        if(GhostPlayer.localPlayer != null)
+        {
+            SubscribeToItemManager(GhostPlayer.localPlayer.itemManager);
+        }
+    }
+
+    public void SubscribeToItemManager(ItemManager itemManager)
+    {
+        if(!alreadySubscribed)
+        {
+            wasPicked.AddListener(itemManager.InteractingWithItems);
+            alreadySubscribed = true;
+        }
     }
 
     public GameObject PickItem () {
@@ -55,8 +72,10 @@ public class KeyItem : MonoBehaviour, IPickableItem
     private void OnMouseDown() {
         RaycastHit hit;
         Vector3 direction = Camera.main.transform.position;
+        Debug.Log("On mouse down");
         if (Physics.Raycast(transform.position, direction, out hit, 20f))
         {
+            Debug.Log("On mouse down " + hit.transform.gameObject.name);
             wasPicked.Invoke(gameObject);
         }
     }
