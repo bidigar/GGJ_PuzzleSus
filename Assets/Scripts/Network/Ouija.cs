@@ -22,6 +22,14 @@ public class Ouija : NetworkBehaviour
     protected bool isClicking;
     protected Transform myTransform;
 
+    public bool CanUseOuija
+    {
+        get
+        {
+            return GhostPlayer.localPlayer != null && GhostPlayer.localPlayer.isGhost;
+        }
+    }
+
     
 
     IEnumerator Start()
@@ -36,6 +44,12 @@ public class Ouija : NetworkBehaviour
     {
         mainObject.SetActive(isVisible);
         visible = isVisible;
+        
+        if(GhostPlayer.localPlayer != null)
+        {
+            GhostPlayer.localPlayer.SetMovement(!isVisible);
+            Cursor.lockState = (isVisible) ? CursorLockMode.None : CursorLockMode.Locked;
+        }
     }
 
     public void OnChangeControl(bool wasControled, bool isControled)
@@ -83,7 +97,7 @@ public class Ouija : NetworkBehaviour
             isClicking = false;
 
         //Try to get control. Should check to hit cursor
-        if(!IsUnderControl && Input.GetMouseButtonDown(0))
+        if(CanUseOuija && !IsUnderControl && Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
 
