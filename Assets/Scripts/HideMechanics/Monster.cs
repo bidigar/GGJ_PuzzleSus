@@ -7,6 +7,8 @@ public class Monster : MonoBehaviour
 {
     bool _monsterOn;
     public bool MonsterOn => _monsterOn;
+    [SerializeField] float minRandomTime;
+    [SerializeField] float maxRandomTime;
     //Red Eyes
 
     private void Start()
@@ -18,7 +20,7 @@ public class Monster : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(50f, 150f));
+            yield return new WaitForSeconds(Random.Range(minRandomTime, maxRandomTime));
             //play sounds approaching
             yield return new WaitForSeconds(5f);
             //play sounds grownling sound

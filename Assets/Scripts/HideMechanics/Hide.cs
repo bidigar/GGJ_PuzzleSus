@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 [RequireComponent(typeof(Monster), typeof(Collider))]
 public class Hide : MonoBehaviour
 {
     [SerializeField] UnityEvent playerDeath = new UnityEvent();
     [SerializeField] UnityEvent<bool> playerHidding = new UnityEvent<bool>();
+    [SerializeField] TextMeshProUGUI pressTo;
+    [SerializeField] GameObject pressSpace;
 
     Monster monster;
-    
+
+    bool showText;
     bool playerHidden;
     bool hideTimerEnded;
     bool death;
@@ -18,6 +22,7 @@ public class Hide : MonoBehaviour
     void Start()
     {
         monster = GetComponent<Monster>();
+        showText = false;
         playerHidden = false;
         hideTimerEnded = true;
         death = false;
@@ -38,6 +43,15 @@ public class Hide : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (playerHidden)
+            {
+                pressTo.text = "to leave"; 
+            }
+            else
+            {
+                pressTo.text = "to hide";
+            }
+            if (!showText) StartCoroutine(ShowText());
             if (Input.GetButton("Jump") && hideTimerEnded)
             {
                 playerHidden = !playerHidden;
@@ -46,6 +60,12 @@ public class Hide : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        showText = false;
+    }
+
 
     IEnumerator HidePlayer()
     {
@@ -58,5 +78,17 @@ public class Hide : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         death = false;
+    }
+
+    IEnumerator ShowText()
+    {
+        showText = true;
+        var wait = new WaitForSeconds(0.1f);
+        while (showText)
+        {
+            pressSpace.SetActive(true);
+            yield return wait;
+        }
+        pressSpace.SetActive(false);
     }
 }
