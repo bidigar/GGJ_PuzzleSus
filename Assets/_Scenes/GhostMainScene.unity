@@ -475,6 +475,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 247887773235486995, guid: 9624d83bea62fb34cbeb0310aa65c1f1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6539406941612881431, guid: 9624d83bea62fb34cbeb0310aa65c1f1, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -525,6 +529,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9624d83bea62fb34cbeb0310aa65c1f1, type: 3}
+--- !u!1 &500111833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 247887773235486995, guid: 9624d83bea62fb34cbeb0310aa65c1f1, type: 3}
+  m_PrefabInstance: {fileID: 500111832}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &500111834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500111833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2d0c843274d6c428ee8bd059434597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGhost: 0
+  objectUsed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 514782788}
+        m_TargetAssemblyTypeName: ChestModule, Assembly-CSharp
+        m_MethodName: DestroyLid
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  wasUsed: 0
+  isDestroyable: 0
+  isUsed: 1
+  needKeyItem: 0
 --- !u!1001 &514782787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -580,8 +621,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 9138106088300243564, guid: eefe87ba30a365046a5083c6e066c9e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eefe87ba30a365046a5083c6e066c9e8, type: 3}
+--- !u!114 &514782788 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8414990551017472981, guid: eefe87ba30a365046a5083c6e066c9e8, type: 3}
+  m_PrefabInstance: {fileID: 514782787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: addc9d429c043254d9e9278c75855b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &623841911
 PrefabInstance:
   m_ObjectHideFlags: 0
