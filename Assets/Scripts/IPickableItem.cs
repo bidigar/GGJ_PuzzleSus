@@ -15,5 +15,5 @@ public interface IPickableItem
     }
     GameObject PickItem ();
     void ReleaseItem();
-    void ItemAction();
+    bool ItemAction(InteractableObject interactable = null);
 }

@@ -4,30 +4,16 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    public bool isGhost = false;
     public float mySizeX = 0.4f;
     public float mySizeY = 2;
     protected bool canUse = false;
-    public GameObject holdingItem;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public KeyItem holdingItem;
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButtonDown("Fire2")) {
             if (holdingItem != null && canUse) {
-                holdingItem.GetComponent<IPickableItem>().ItemAction();
-                canUse = false;
-                holdingItem = null;
-            }
-        }
-        if (Input.GetButtonDown("Fire1")) {
-            if (holdingItem != null && canUse) {
-                holdingItem.GetComponent<IPickableItem>().ReleaseItem();
+                holdingItem.ReleaseItem();
                 canUse = false;
                 holdingItem = null;
             }
@@ -40,26 +26,32 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    public void GrabbingItem(GameObject newItem) {
-        IPickableItem pickableItem = newItem.GetComponent<IPickableItem>();
-        if (pickableItem != null && pickableItem.canBePickedByGhost == isGhost) {
-            holdingItem = pickableItem.PickItem();
-        }
-    }
-
     void UpdateItemPosition() {
-        float itemSize = (mySizeX + holdingItem.GetComponent<IPickableItem>().itemSize);
+        float itemSize = (mySizeX + holdingItem.itemSize);
         holdingItem.gameObject.transform.position = transform.position + transform.forward * (mySizeX + itemSize) * 0.5f;
     }
 
-    private void OnTriggerStay(Collider other) {
-        if(Input.GetButtonDown("Jump")){
-            IPickableItem newItem = other.gameObject.GetComponent<IPickableItem>();
-            if (holdingItem == null) {
-                holdingItem = newItem.PickItem();
-                StartCoroutine(WaitForUse());
-            }
+    public void InteractingWithItems(GameObject item) {
+        KeyItem pickedItem = item.GetComponent<KeyItem>();
+        if (holdingItem == null && pickedItem != null) {
+            holdingItem = pickedItem.PickItem().GetComponent<KeyItem>();
+            StartCoroutine(WaitForUse());
+            return;
         }
+
+        InteractableObject interactable = item.GetComponent<InteractableObject>();
+        if (interactable != null) {
+            interactable.ObjectInteraction(this);
+        }
+    }
+    
+    public bool UseHoldingItem(InteractableObject callingObject) {
+        if (holdingItem != null && canUse && holdingItem.ItemAction(callingObject)) {
+            canUse = false;
+            holdingItem = null;
+            return true;
+        }
+        return false;
     }
 
     private IEnumerator WaitForUse() {
