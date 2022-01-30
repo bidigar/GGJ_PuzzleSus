@@ -448,6 +448,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4443801781683190257}
+  - component: {fileID: 644081363476382800}
+  - component: {fileID: 8414990551017472981}
+  - component: {fileID: 960316996}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -473,6 +476,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &644081363476382800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7604200356922180600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2d0c843274d6c428ee8bd059434597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGhost: 0
+  objectUsed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8414990551017472981}
+        m_TargetAssemblyTypeName: ChestModule, Assembly-CSharp
+        m_MethodName: DestroyLid
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  wasUsed: 0
+  isDestroyable: 0
+  isUsed: 0
+  needKeyItem: 0
+--- !u!114 &8414990551017472981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7604200356922180600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: addc9d429c043254d9e9278c75855b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lid: {fileID: 4264797383128391724}
+--- !u!65 &960316996
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7604200356922180600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.7}
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1 &8220744162992712410
 GameObject:
   m_ObjectHideFlags: 0
