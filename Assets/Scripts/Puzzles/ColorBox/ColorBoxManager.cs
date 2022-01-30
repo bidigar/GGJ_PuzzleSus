@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ColorBoxManager : MonoBehaviour
 {
+    [SerializeField] GameObject key;
     [SerializeField] GameObject holeOne;
     [SerializeField] GameObject holeTwo;
     [SerializeField] GameObject holeThree;
@@ -29,6 +30,7 @@ public class ColorBoxManager : MonoBehaviour
     {
         if (holeOne_MeshRenderer.material.color == Color.Lerp(Color.red, Color.yellow, 0.5f) && holeTwo_MeshRenderer.material.color == Color.green && holeThree_MeshRenderer.material.color == Color.blue)
         {
+            key.SetActive(true);
             Destroy(gameObject);
         }
     }
