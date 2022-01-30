@@ -10,7 +10,7 @@ public class TeleportPlayerTo : MonoBehaviour
     GhostPlayer ghostPlayer;
     public Ouija ouija;
     [SerializeField] CanvasGroup canvasGroup;
-
+    [SerializeField] bool Debug;
     private void Start()
     {
         ghostPlayer = GetComponent<GhostPlayer>();
@@ -21,7 +21,7 @@ public class TeleportPlayerTo : MonoBehaviour
         if (isHiding)
         {
             //DESATIVAR OUIJA
-            ghostPlayer.SetMovement(false);
+            if (!Debug) ghostPlayer.SetMovement(false);
             transform.position = hideTransform.position;
         }
         else
@@ -34,7 +34,7 @@ public class TeleportPlayerTo : MonoBehaviour
     IEnumerator WaitForMovement()
     {
         yield return new WaitForSeconds(0.1f);
-        ghostPlayer.SetMovement(true);
+        if (!Debug) ghostPlayer.SetMovement(true);
         //REATIVAR OUIJA
     }
     public void DeathPosition()
@@ -46,7 +46,7 @@ public class TeleportPlayerTo : MonoBehaviour
     IEnumerator DeathCycle()
     {
         //DESATIVAR OUIJA
-        ghostPlayer.SetMovement(false);
+        if (!Debug) ghostPlayer.SetMovement(false);
         var transition = new WaitForSeconds(0.1f);
         while (canvasGroup.alpha != 1)
         {
@@ -60,7 +60,7 @@ public class TeleportPlayerTo : MonoBehaviour
             yield return transition;
         }
         yield return new WaitForSeconds(2f);
-        ghostPlayer.SetMovement(true);
+        if (!Debug) ghostPlayer.SetMovement(true);
     }
 
 }
