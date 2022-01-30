@@ -17,6 +17,9 @@ public class GhostPlayer : NetworkBehaviour
             localPlayer = this;
 
         localPlayerOnly.SetActive(isLocalPlayer);
+
+        if(isLocalPlayer && isGhost)
+            RenderSettings.fog = false;
     }
 
     public void SetMovement(bool movement)

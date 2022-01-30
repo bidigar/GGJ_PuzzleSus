@@ -4,10 +4,28 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    public static ItemManager Instance
+    {
+        get
+        {
+            if(m_instance == null)
+            {
+                m_instance = GameObject.FindObjectOfType<ItemManager>();
+            }
+            return m_instance;
+        }
+    }
+    protected static ItemManager m_instance = null;
     public float mySizeX = 0.4f;
     public float mySizeY = 2;
     protected bool canUse = false;
     public KeyItem holdingItem;
+
+    void Start()
+    {
+        if(m_instance == null)
+            m_instance = this;
+    }
 
     void Update()
     {

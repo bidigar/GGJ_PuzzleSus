@@ -1863,9 +1863,9 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5dd49b3eacc540408c98eee0de38e0f1, type: 3}
-    m_FontSize: 23
+    m_FontSize: 18
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
@@ -1876,16 +1876,16 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Rodrigo Moreira Pereira
 
-    
+
 
     Gustavo Moreira Pereira
 
-    
+
 
     Augusto
     Paulo Silva
 
-    
+
 
     Arthur Rosa de Souza'
 --- !u!222 &1814851953

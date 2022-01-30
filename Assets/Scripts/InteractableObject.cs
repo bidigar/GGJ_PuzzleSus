@@ -13,10 +13,13 @@ public class InteractableObject : MonoBehaviour
     UnityEvent<GameObject> wasClicked = new UnityEvent<GameObject>();
     public bool needKeyItem = true;
 
-    void Start()
+    IEnumerator Start()
     {
-        if (!isGhost) wasClicked.AddListener(GameObject.FindGameObjectWithTag("Player").GetComponent<ItemManager>().InteractingWithItems);
-        else wasClicked.AddListener(GameObject.FindGameObjectWithTag("Player").GetComponent<ItemManager>().InteractingWithItems);
+        yield return null;
+        yield return null;
+
+        if (!isGhost) wasClicked.AddListener(ItemManager.Instance.InteractingWithItems);
+        else wasClicked.AddListener(ItemManager.Instance.InteractingWithItems);
     }
 
     public void ObjectInteraction(ItemManager manager) {
@@ -35,4 +38,5 @@ public class InteractableObject : MonoBehaviour
             wasClicked.Invoke(gameObject);
         }
     }
+
 }
