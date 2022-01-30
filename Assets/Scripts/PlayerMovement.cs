@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
+    [SerializeField] bool Stop;
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -23,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (Stop) return;
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
