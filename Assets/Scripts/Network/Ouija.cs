@@ -159,6 +159,6 @@ public class Ouija : NetworkBehaviour
     {
         netIdentity.RemoveClientAuthority();
 
-        GetComponent<NetworkTransformBase>()?.ServerTeleport(endPosition);
+        // GetComponent<NetworkTransformBase>()?.ServerTeleport(endPosition);
     }
 }
