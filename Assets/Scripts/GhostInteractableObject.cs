@@ -11,10 +11,26 @@ public class GhostInteractableObject : MonoBehaviour
     public bool isDestroyable = false;
     UnityEvent<GameObject> wasClicked = new UnityEvent<GameObject>();
 
+    bool alreadySubscribed = false;
+
     void Start()
     {
-        if (!isGhost) wasClicked.AddListener(GameObject.FindGameObjectWithTag("Ghost").GetComponent<GhostItemManager>().InteractingWithItems);
-        else wasClicked.AddListener(GameObject.FindGameObjectWithTag("Ghost").GetComponent<GhostItemManager>().InteractingWithItems);
+        if (GhostPlayer.localPlayer != null)
+        {
+            if (GhostPlayer.localPlayer.isGhost)SubscribeToItemManager(GhostPlayer.localPlayer.itemManager, GhostPlayer.localPlayer.isGhost);
+        }
+        //if (!isGhost) wasClicked.AddListener(GameObject.FindGameObjectWithTag("Ghost").GetComponent<GhostItemManager>().InteractingWithItems);
+        //else wasClicked.AddListener(GameObject.FindGameObjectWithTag("Ghost").GetComponent<GhostItemManager>().InteractingWithItems);
+    }
+
+    public void SubscribeToItemManager(ItemManager itemManager, bool subscriberIsGhost)
+    {
+        if (!alreadySubscribed)
+        {
+            if (isGhost == subscriberIsGhost)
+                wasClicked.AddListener(itemManager.InteractingWithItems);
+            alreadySubscribed = true;
+        }
     }
 
     public void ObjectInteraction(GhostItemManager manager) {

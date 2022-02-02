@@ -1,43 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ColorChange : MonoBehaviour
 {
+    private Color _thisColor;
+    public Color ThisColor => _thisColor;
     int index;
-    MeshRenderer meshRenderer;
+    MeshRenderer _meshRenderer;
+    public MeshRenderer ThisMeshRenderer => _meshRenderer;
+    BoxCollider boxCollider;
 
     private void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        _meshRenderer = GetComponent<MeshRenderer>();
+        boxCollider = GetComponent<BoxCollider>();
         index = 0;
-        meshRenderer.material.color = Color.red;
+        _thisColor = Color.red;
+        Disable();
     }
 
     public void ChangeColor()
     {
         index++;
         if (index > 5) index = 0;
-        switch(index)
+        switch (index)
         {
             case 0:
-            meshRenderer.material.color = Color.red;
+                _thisColor = Color.red;
                 break;
             case 1:
-                meshRenderer.material.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
+                _thisColor = Color.Lerp(Color.red, Color.yellow, 0.5f);
                 break;
             case 2:
-                meshRenderer.material.color = Color.yellow;
+                _thisColor = Color.yellow;
                 break;
             case 3:
-                meshRenderer.material.color = Color.green;
+                _thisColor = Color.green;
                 break;
             case 4:
-                meshRenderer.material.color = Color.blue;
+                _thisColor = Color.blue;
                 break;
             case 5:
-                meshRenderer.material.color = Color.Lerp(Color.blue, Color.red, 0.5f);
+                _thisColor = Color.Lerp(Color.blue, Color.red, 0.5f);
                 break;
         }
+    }
+
+    public void Enable()
+    {
+        boxCollider.enabled = true;
+    }
+
+    void Disable()
+    {
+        boxCollider.enabled = false;
     }
 }
