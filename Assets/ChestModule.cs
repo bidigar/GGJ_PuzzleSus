@@ -1,24 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class ChestModule : MonoBehaviour
+public class ChestModule : NetworkBehaviour
 {
     public GameObject Lid;
 
-    // Start is called before the first frame update
-    void Start()
+    public void DestroyLid ()
     {
-        
+        CmdDestroyLid();
     }
 
-    // Update is called once per frame
-    void Update()
+    [Command(requiresAuthority = false)]
+    public void CmdDestroyLid()
     {
-        
+        RpcDestroyLid();
     }
 
-    public void DestroyLid () {
+    [ClientRpc]
+    void RpcDestroyLid()
+    {
         Destroy(Lid);
     }
 }
