@@ -75,6 +75,7 @@ public class KeyItem : MonoBehaviour, IPickableItem
         Debug.Log("On mouse down");
         if (Physics.Raycast(transform.position, direction, out hit, 20f))
         {
+            Debug.DrawRay(transform.position, direction, Color.red, 20f);
             Debug.Log("On mouse down " + hit.transform.gameObject.name);
             wasPicked.Invoke(gameObject);
         }

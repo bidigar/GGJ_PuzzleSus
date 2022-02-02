@@ -46,7 +46,7 @@ public class ItemManager : MonoBehaviour
 
     void UpdateItemPosition() {
         float itemSize = (mySizeX + holdingItem.itemSize);
-        holdingItem.gameObject.transform.position = transform.position + transform.forward * (mySizeX + itemSize) * 0.5f;
+        holdingItem.gameObject.transform.position = transform.position + transform.forward  * (mySizeX + itemSize) * 0.5f;
     }
 
     public void InteractingWithItems(GameObject item) {
