@@ -151,6 +151,7 @@ public class Ouija : NetworkBehaviour
         if(sender != null)
         {
             netIdentity.AssignClientAuthority(sender);
+            IsUnderControl = true;
         }
     }
 
@@ -158,6 +159,7 @@ public class Ouija : NetworkBehaviour
     protected void CmdRemoveControl(Vector3 endPosition)
     {
         netIdentity.RemoveClientAuthority();
+        IsUnderControl = false;
 
         // GetComponent<NetworkTransformBase>()?.ServerTeleport(endPosition);
     }

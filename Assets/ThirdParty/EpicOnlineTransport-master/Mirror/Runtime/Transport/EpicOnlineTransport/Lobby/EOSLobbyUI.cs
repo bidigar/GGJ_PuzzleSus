@@ -1,16 +1,19 @@
 ﻿using Epic.OnlineServices.Lobby;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using EpicTransport;
 using Mirror;
 
 public class EOSLobbyUI : EOSLobby {
+    public string[] appearOnScenes;
     private string lobbyName = "My Lobby";
     private bool showLobbyList = false;
     private bool showPlayerList = false;
 
     private List<LobbyDetails> foundLobbies = new List<LobbyDetails>();
     private List<Attribute> lobbyData = new List<Attribute>();
+    private bool drawGUI = true;
 
     //register events
     private void OnEnable() {
@@ -19,6 +22,7 @@ public class EOSLobbyUI : EOSLobby {
         JoinLobbySucceeded += OnJoinLobbySuccess;
         FindLobbiesSucceeded += OnFindLobbiesSuccess;
         LeaveLobbySucceeded += OnLeaveLobbySuccess;
+        SceneManager.activeSceneChanged += OnChangeScene;
     }
 
     //deregister events
@@ -28,6 +32,7 @@ public class EOSLobbyUI : EOSLobby {
         JoinLobbySucceeded -= OnJoinLobbySuccess;
         FindLobbiesSucceeded -= OnFindLobbiesSuccess;
         LeaveLobbySucceeded -= OnLeaveLobbySuccess;
+        SceneManager.activeSceneChanged -= OnChangeScene;
     }
 
     //when the lobby is successfully created, start the host
@@ -64,11 +69,30 @@ public class EOSLobbyUI : EOSLobby {
         netManager.StopClient();
     }
 
+    private void OnChangeScene(Scene oldScene, Scene newScene) 
+    {
+        bool shouldAppear = false;
+
+        for (int i = 0; i < appearOnScenes.Length; i++)
+        {
+            if(newScene.name == appearOnScenes[i])
+            {
+                shouldAppear = true;
+                break;
+            }
+        }
+
+        drawGUI = shouldAppear;
+
+    }
+
     private void OnGUI() {
         //if the component is not initialized then dont continue
         if (!EOSSDKComponent.Initialized) {
             return;
         }
+
+        if(!drawGUI) return;
 
         //start UI
         GUILayout.BeginHorizontal();

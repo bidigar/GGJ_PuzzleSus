@@ -721,6 +721,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttributeKeys:
   - lobby_name
+  appearOnScenes:
+  - MainMenuEpic
+  - GhostLobby
 --- !u!114 &329672185
 MonoBehaviour:
   m_ObjectHideFlags: 0
