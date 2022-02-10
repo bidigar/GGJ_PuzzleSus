@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 7172770673109918381}
   - component: {fileID: 8508654193662005166}
   - component: {fileID: 2583370154561186008}
-  - component: {fileID: 6152438653527501473}
+  - component: {fileID: 3471302880018958584}
   m_Layer: 6
   m_Name: HumanPlayer
   m_TagString: Player
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
---- !u!114 &6152438653527501473
+--- !u!114 &3471302880018958584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -370,7 +370,7 @@ MonoBehaviour:
   _tokens:
     _tokens: []
   _channelTypeExpanded: 1
-  _metadataExpanded: 0
+  _metadataExpanded: 1
   _activationModeExpanded: 0
   _tokensExpanded: 0
   _ampExpanded: 0
@@ -383,13 +383,13 @@ MonoBehaviour:
     _fadeInTicks: 7500000
     _fadeOutTicks: 11500000
   _broadcastPosition: 1
-  _channelType: 0
+  _channelType: 2
   _inputName: 
   _mode: 1
   _muted: 0
   _playerId: 
   _useTrigger: 0
-  _roomName: Global
+  _roomName: 
   _priority: -2
 --- !u!1 &5714153319062220636
 GameObject:

@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 3876016690171393573}
   - component: {fileID: 7172770673109918381}
   - component: {fileID: 7183196704009200094}
+  - component: {fileID: 8246975224978894953}
   m_Layer: 7
   m_Name: GhostPlayer
   m_TagString: Player
@@ -334,6 +335,20 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   speed: 2
+--- !u!114 &8246975224978894953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131202552220650064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0fc7e5ceca1c440b7b759812c6a0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!1 &5714153319062220636
 GameObject:
   m_ObjectHideFlags: 0
