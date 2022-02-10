@@ -381,7 +381,7 @@ MonoBehaviour:
   _channelType: 2
   _inputName: 
   _mode: 1
-  _muted: 1
+  _muted: 0
   _playerId: 
   _useTrigger: 0
   _roomName: 
