@@ -35,6 +35,12 @@ public class EOSLobbyUI : EOSLobby {
         SceneManager.activeSceneChanged -= OnChangeScene;
     }
 
+    private void OnDestroy()
+    {
+        if(ConnectedToLobby)
+            LeaveLobby();
+    }
+
     //when the lobby is successfully created, start the host
     private void OnCreateLobbySuccess(List<Attribute> attributes) {
         lobbyData = attributes;

@@ -20,7 +20,15 @@ public class GhostPlayer : NetworkBehaviour
         localPlayerOnly.SetActive(isLocalPlayer);
 
         if(isLocalPlayer && isGhost)
+        {
             RenderSettings.fog = false;
+            var coms = FindObjectOfType<Dissonance.DissonanceComms>();
+
+            if(coms != null)
+            {
+                coms.IsMuted = true;
+            }
+        }
 
         if(isLocalPlayer)
             FindIteractables();
