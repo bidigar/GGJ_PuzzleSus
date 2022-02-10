@@ -751,6 +751,7 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 5131202552220650064, guid: de8f14b49dea6154b8d57d17cdc5d717, type: 3}
+  - {fileID: 5453688740357228953, guid: fd5ce71d294afa2438de253cef848d03, type: 3}
   showRoomGUI: 1
   minPlayers: 1
   roomPlayerPrefab: {fileID: 1133476576129721134, guid: 57e207dfcf0b79f4c9807d223db7e661, type: 3}
@@ -810,7 +811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &584423527
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2015,7 +2016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1751440959
 RectTransform:
   m_ObjectHideFlags: 0
