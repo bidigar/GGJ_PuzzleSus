@@ -16,6 +16,7 @@ public class Ouija : NetworkBehaviour
     public Collider cursorCollider;
 
     public UnityEvent OnStartRemoteControl = new UnityEvent();
+    public UnityEvent OnEndRemoteControl = new UnityEvent();
     protected bool visible;
     protected Camera mainCamera;
     protected Transform cameraTrasform;
@@ -54,8 +55,11 @@ public class Ouija : NetworkBehaviour
 
     public void OnChangeControl(bool wasControled, bool isControled)
     {
-        if(!hasAuthority && isControled && OnStartRemoteControl != null)
+        if(!CanUseOuija && isControled && OnStartRemoteControl != null)
             OnStartRemoteControl.Invoke();
+
+        if (!CanUseOuija && !isControled && OnEndRemoteControl != null)
+            OnEndRemoteControl.Invoke();
     }
 
     public override void OnStartAuthority()
