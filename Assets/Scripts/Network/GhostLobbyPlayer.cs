@@ -4,7 +4,7 @@ using Mirror;
 
 public class GhostLobbyPlayer : NetworkRoomPlayer
 {
-    public GameObject voicePrefab;
+    // public GameObject voicePrefab;
     public override void OnStartClient()
     {
         //Debug.Log($"OnStartClient {gameObject}");
@@ -14,10 +14,10 @@ public class GhostLobbyPlayer : NetworkRoomPlayer
     {
         //Debug.Log($"OnClientEnterRoom {SceneManager.GetActiveScene().path}");
 
-        if(hasAuthority)
-        {
-            CmdAskForVoice();
-        }
+        // if(hasAuthority)
+        // {
+        //     CmdAskForVoice();
+        // }
     }
 
     public override void OnClientExitRoom()
@@ -40,9 +40,9 @@ public class GhostLobbyPlayer : NetworkRoomPlayer
         base.OnGUI();
     }
 
-    [Command]
-    public void CmdAskForVoice()
-    {
-        NetworkServer.Spawn(GameObject.Instantiate(voicePrefab),connectionToClient);
-    }
+    // [Command]
+    // public void CmdAskForVoice()
+    // {
+    //     NetworkServer.Spawn(GameObject.Instantiate(voicePrefab),connectionToClient);
+    // }
 }
