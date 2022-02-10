@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 8508654193662005166}
   - component: {fileID: 2583370154561186008}
   - component: {fileID: 3471302880018958584}
+  - component: {fileID: 3342926126434239245}
   m_Layer: 6
   m_Name: HumanPlayer
   m_TagString: Player
@@ -371,8 +372,8 @@ MonoBehaviour:
     _tokens: []
   _channelTypeExpanded: 1
   _metadataExpanded: 1
-  _activationModeExpanded: 0
-  _tokensExpanded: 0
+  _activationModeExpanded: 1
+  _tokensExpanded: 1
   _ampExpanded: 0
   _activationFaderSettings:
     _volume: 1
@@ -390,6 +391,42 @@ MonoBehaviour:
   _playerId: 
   _useTrigger: 0
   _roomName: 
+  _priority: -2
+--- !u!114 &3342926126434239245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131202552220650064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a066ddbf125f9546bcadc947418566b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tokens:
+    _tokens: []
+  _channelTypeExpanded: 1
+  _metadataExpanded: 0
+  _activationModeExpanded: 1
+  _tokensExpanded: 0
+  _ampExpanded: 0
+  _activationFaderSettings:
+    _volume: 1
+    _fadeInTicks: 0
+    _fadeOutTicks: 1500000
+  _triggerFaderSettings:
+    _volume: 1
+    _fadeInTicks: 7500000
+    _fadeOutTicks: 11500000
+  _broadcastPosition: 1
+  _channelType: 0
+  _inputName: 
+  _mode: 1
+  _muted: 0
+  _playerId: 
+  _useTrigger: 0
+  _roomName: Global
   _priority: -2
 --- !u!1 &5714153319062220636
 GameObject:
